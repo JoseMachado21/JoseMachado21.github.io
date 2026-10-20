@@ -7,22 +7,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root[data-theme="dark"] {
-            --bg-main: #0b0f19;
-            --bg-card: rgba(22, 31, 51, 0.7);
-            --bg-nav: rgba(11, 15, 25, 0.85);
+            --bg-main: #080d1e;
+            --bg-card: rgba(18, 26, 46, 0.72);
+            --bg-nav: rgba(8, 13, 30, 0.85);
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --accent: #38bdf8;
             --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-            --border: rgba(255, 255, 255, 0.08);
-            --tag-bg: rgba(56, 189, 248, 0.1);
+            --border: rgba(255, 255, 255, 0.09);
+            --tag-bg: rgba(56, 189, 248, 0.12);
             --tag-text: #7dd3fc;
             --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
         :root[data-theme="light"] {
             --bg-main: #f8fafc;
-            --bg-card: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.82);
             --bg-nav: rgba(248, 250, 252, 0.85);
             --text-primary: #0f172a;
             --text-secondary: #475569;
@@ -44,7 +44,18 @@
             margin: 0;
             padding: 0;
             transition: background-color 0.3s, color 0.3s;
-            background-image: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+            overflow-x: hidden;
+        }
+
+        /* FUNDO ANIMADO DE PARTÍCULAS E LINHAS */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* BARRA DE NAVEGAÇÃO */
@@ -106,6 +117,8 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 50px 20px;
+            position: relative;
+            z-index: 1;
         }
 
         /* HERO / CABEÇALHO */
@@ -149,6 +162,7 @@
             border-radius: 20px;
             margin-bottom: 12px;
             border: 1px solid rgba(56, 189, 248, 0.2);
+            backdrop-filter: blur(6px);
         }
         h1 {
             margin: 0 0 10px 0;
@@ -193,6 +207,7 @@
 
         .btn-secondary {
             background: var(--bg-card);
+            backdrop-filter: blur(10px);
             color: var(--text-primary);
             border: 1px solid var(--border);
             padding: 12px 20px;
@@ -250,7 +265,7 @@
         /* CARTÕES */
         .card {
             background: var(--bg-card);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 25px;
@@ -343,6 +358,8 @@
             border-top: 1px solid var(--border);
             color: var(--text-secondary);
             font-size: 0.9rem;
+            background: var(--bg-nav);
+            backdrop-filter: blur(8px);
         }
 
         @media (max-width: 600px) {
@@ -353,6 +370,9 @@
     </style>
 </head>
 <body>
+
+    <!-- FUNDO INTERATIVO DE PARTÍCULAS -->
+    <canvas id="particles-canvas"></canvas>
 
     <!-- BARRA DE NAVEGAÇÃO -->
     <nav>
@@ -602,7 +622,6 @@
                         <p data-en="Producing and editing digital video content, managing multimedia assets, and supporting operational and team management activities within the competitive esports scene." data-pt="Produção e edição de conteúdo de vídeo digital, gestão de recursos multimédia e apoio nas operações e gestão de equipa no cenário competitivo de esports.">Producing and editing digital video content, managing multimedia assets, and supporting operational and team management activities within the competitive esports scene.</p>
                     </div>
                     <div class="proof-group">
-                        <!-- Substitui os links abaixo pelos URLs exatos do Instagram e X da BeeHOF -->
                         <a href="https://www.instagram.com/beehof_esports/" class="proof-btn" target="_blank">📸 Instagram</a>
                         <a href="https://x.com/beehof_esports?s=20" class="proof-btn" target="_blank">🐦 X (Twitter)</a>
                     </div>
@@ -615,7 +634,6 @@
                         <div class="card-subtitle">GD Delães</div>
                         <p data-en="Practicing daily leadership, team management, pedagogy, and clear communication with young athletes on and off the pitch." data-pt="Exercício diário de liderança, gestão de equipa, pedagogia e comunicação clara com jovens atletas dentro e fora de campo.">Practicing daily leadership, team management, pedagogy, and clear communication with young athletes on and off the pitch.</p>
                     </div>
-                    
                 </div>
 
                 <!-- Game Dev -->
@@ -646,9 +664,6 @@
                         <div class="card-title" data-en="English" data-pt="Inglês">English</div>
                         <div class="card-subtitle" data-en="Advanced / Proficient" data-pt="Avançado / Proficiente">Advanced / Proficient</div>
                     </div>
-                    <!-- <div class="proof-group">
-                        <a href="docs/english_cert.pdf" class="proof-btn" target="_blank">📎 View Language Certificate</a>
-                    </div>-->
                 </div>
             </div>
         </section>
@@ -680,7 +695,7 @@
         © 2026 José Machado • Built with HTML/CSS & Hosted on GitHub Pages
     </footer>
 
-    <!-- SCRIPTS PARA MUDAR TEMA (DARK/LIGHT) E IDIOMA (EN/PT) -->
+    <!-- SCRIPTS: TEMA, TRADUTOR E ANIMAÇÃO DE PARTÍCULAS -->
     <script>
         let currentLang = 'en';
 
@@ -700,11 +715,9 @@
             currentLang = currentLang === 'en' ? 'pt' : 'en';
             document.documentElement.lang = currentLang;
             
-            // Atualiza o texto do botão de idioma
             const langBtn = document.getElementById('langBtn');
             langBtn.innerHTML = currentLang === 'en' ? '🇵🇹 PT' : '🇬🇧 EN';
 
-            // Atualiza também o texto do botão de tema
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             const themeBtn = document.getElementById('themeBtn');
             if (isDark) {
@@ -713,12 +726,113 @@
                 themeBtn.innerHTML = currentLang === 'en' ? '🌙 Dark' : '🌙 Escuro';
             }
 
-            // Traduz todos os elementos que têm os atributos data-en e data-pt
             const elements = document.querySelectorAll('[data-en][data-pt]');
             elements.forEach(el => {
                 el.innerHTML = el.getAttribute(`data-${currentLang}`);
             });
         }
+
+        // ANIMAÇÃO DO FUNDO DE PARTÍCULAS E LINHAS TÉCNICAS
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const mouse = { x: null, y: null, radius: 140 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vy = (Math.random() - 0.5) * 0.7;
+                this.size = Math.random() * 1.8 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw(dotColor) {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = dotColor;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(Math.floor((canvas.width * canvas.height) / 11000), 110);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const dotColor = isDark ? 'rgba(125, 211, 252, 0.7)' : 'rgba(2, 132, 199, 0.5)';
+            const baseLineRgb = isDark ? '125, 211, 252' : '2, 132, 199';
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw(dotColor);
+
+                // Ligações entre partículas próximas
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 135) {
+                        const opacity = (1 - dist / 135) * (isDark ? 0.28 : 0.2);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(${baseLineRgb}, ${opacity})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Ligação interativa com o cursor do rato
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = particles[i].x - mouse.x;
+                    const dy = particles[i].y - mouse.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouse.radius) {
+                        const opacity = (1 - dist / mouse.radius) * 0.45;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(${baseLineRgb}, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        animateParticles();
     </script>
 
 </body>
