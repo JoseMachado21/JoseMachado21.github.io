@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Machado | Portfolio & CV</title>
+    <title>José Machado | Software Developer & Game Dev</title>
     <style>
         :root {
             --bg-color: #f8f9fa;
             --text-color: #212529;
-            --muted-color: #6c757d;
+            --muted-color: #555;
             --card-bg: #ffffff;
-            --accent-color: #111111;
-            --border-color: #e9ecef;
+            --accent-color: #0f172a;
+            --accent-hover: #334155;
+            --border-color: #e2e8f0;
+            --badge-bg: #f1f5f9;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            max-width: 750px;
-            margin: 60px auto;
+            max-width: 800px;
+            margin: 50px auto;
             padding: 0 20px;
             color: var(--text-color);
             line-height: 1.6;
@@ -27,8 +29,9 @@
             padding-bottom: 30px;
             margin-bottom: 40px;
         }
-        h1 { margin: 0 0 5px 0; font-size: 2.5rem; letter-spacing: -0.5px; }
-        .tagline { color: var(--muted-color); font-size: 1.2rem; margin-bottom: 20px; }
+        h1 { margin: 0 0 5px 0; font-size: 2.6rem; letter-spacing: -0.5px; color: var(--accent-color); }
+        .tagline { color: var(--muted-color); font-size: 1.2rem; font-weight: 500; margin-bottom: 15px; }
+        .summary { font-size: 1.05rem; margin-bottom: 25px; }
         
         h2 { 
             font-size: 1.3rem; 
@@ -36,48 +39,32 @@
             letter-spacing: 1px; 
             margin-bottom: 20px;
             border-left: 4px solid var(--accent-color);
-            padding-left: 10px;
+            padding-left: 12px;
+            color: var(--accent-color);
         }
         .section { margin-bottom: 45px; }
         
-        /* Cartões para Experiência e Educação */
+        /* Cartões */
         .item-card {
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 22px;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
         .item-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
-        .item-title { font-weight: 700; font-size: 1.1rem; }
-        .item-subtitle { color: var(--muted-color); font-weight: 500; }
-        .item-date { color: var(--muted-color); font-size: 0.9rem; }
+        .item-title { font-weight: 700; font-size: 1.15rem; color: var(--accent-color); }
+        .item-subtitle { color: var(--muted-color); font-weight: 600; font-size: 0.95rem; margin-bottom: 10px; }
+        .item-date { color: var(--muted-color); font-size: 0.9rem; font-weight: 500; }
         
-        /* Etiquetas para Competências e Passatempos */
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        /* Grelha para Idiomas */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        /* Botões e Links */
+        /* Botões Principais e Botões de Comprovativo (Proof) */
         a.button {
             display: inline-block;
             background: var(--accent-color);
@@ -86,26 +73,74 @@
             text-decoration: none;
             border-radius: 6px;
             font-weight: 500;
-            margin-top: 10px;
+            font-size: 0.95rem;
+            transition: background 0.2s;
         }
-        a.button:hover { opacity: 0.85; }
-        .contact-links a {
+        a.button:hover { background: var(--accent-hover); }
+
+        a.proof-btn {
+            display: inline-flex;
+            align-items: center;
+            background: var(--badge-bg);
+            color: var(--accent-color);
+            border: 1px solid #cbd5e1;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-right: 8px;
+            transition: all 0.2s;
+        }
+        a.proof-btn:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+        }
+
+        /* Categorias de Competências */
+        .skill-category { margin-bottom: 15px; }
+        .skill-category-title { font-weight: 600; margin-bottom: 8px; font-size: 0.95rem; color: var(--muted-color); }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Grelha para Certificados e Idiomas */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        /* Contactos */
+        .contact-list p { margin: 8px 0; }
+        .contact-list a {
             color: var(--accent-color);
             font-weight: 600;
             text-decoration: none;
-            margin-right: 15px;
         }
-        .contact-links a:hover { text-decoration: underline; }
+        .contact-list a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO E BOTÃO DO CV -->
+    <!-- CABEÇALHO E RESUMO -->
     <header>
         <h1>José Machado</h1>
-        <div class="tagline">Your Job Title / Professional Area</div>
-        <p>Brief introduction about yourself, your goals, and what you bring to a team.</p>
-        <a href="cv.pdf" class="button" target="_blank">Download Full CV (PDF)</a>
+        <div class="tagline">Computer Engineering Graduate | Full-Stack & Mobile Developer | MSc Student in Digital Game Development</div>
+        <p class="summary">
+            Computer Engineering graduate currently pursuing a Master's degree in Digital Game Development. 
+            Experienced in end-to-end (Full-Stack) software development, complemented by strong pedagogical, communication, and leadership skills developed as a youth football coach.
+        </p>
+        <!-- Botão para o teu CV em PDF -->
+        <a href="docs/cv.pdf" class="button" target="_blank">📄 Download Official CV (PDF)</a>
     </header>
 
     <!-- 1. EXPERIÊNCIA PROFISSIONAL -->
@@ -114,77 +149,156 @@
         
         <div class="item-card">
             <div class="item-header">
-                <span class="item-title">Job Title / Role</span>
-                <span class="item-date">Month Year - Present</span>
+                <span class="item-title">Software Developer / Programmer</span>
+                <span class="item-date">09/2025 – 04/2026 (Ongoing Maintenance)</span>
             </div>
-            <div class="item-subtitle">Company Name • Location</div>
-            <p>Describe your main responsibilities, daily tasks, and key achievements in this role.</p>
+            <div class="item-subtitle">LZ Soluções de Higiene • Vila das Aves, Portugal</div>
+            <p>Developed an Android application for inventory and stock management. Responsible for the entire project lifecycle: Front-end (XML), Kotlin programming, API integration, back-end (Supabase), and version control (Git/GitHub). Currently responsible for ongoing system maintenance.</p>
+            
+            <!-- Comprovativo de Experiência (ex: Carta de Recomendação ou print/demo do projeto) -->
+            <a href="docs/lz_proof.pdf" class="proof-btn" target="_blank">📎 View Reference / Project Proof</a>
         </div>
-
-        <!-- Se tiveres mais experiências, basta copiar e colar o bloco <div class="item-card">...</div> abaixo -->
     </div>
 
     <!-- 2. FORMAÇÃO ACADÉMICA -->
     <div class="section">
         <h2>Education</h2>
+
+        <div class="item-card">
+            <div class="item-header">
+                <span class="item-title">MSc in Digital Game Development</span>
+                <span class="item-date">Current</span>
+            </div>
+            <div class="item-subtitle">Master's Degree</div>
+            <p>Currently specializing in game architecture, interactive systems, and digital game development.</p>
+            <a href="docs/masters_enrollment.pdf" class="proof-btn" target="_blank">📎 View Enrollment Proof</a>
+        </div>
         
         <div class="item-card">
             <div class="item-header">
-                <span class="item-title">Degree / Course Name</span>
-                <span class="item-date">Year - Year</span>
+                <span class="item-title">BSc in Computer Engineering (Licenciatura)</span>
+                <span class="item-date">09/2023 – 06/2026</span>
             </div>
-            <div class="item-subtitle">School or University Name</div>
-            <p>Optional: Mention relevant subjects, final project, or academic achievements.</p>
+            <div class="item-subtitle">Universidade Lusófona do Porto • Porto, Portugal</div>
+            <p>Completed Bachelor's degree in Computer Engineering. Built a solid foundation in software analysis and development across multiple computing areas, highlighted by achieving a final grade of <strong>17/20</strong> on the capstone project.</p>
+            
+            <!-- Botões para o Diploma e Projeto Final -->
+            <a href="docs/diploma_licenciatura.pdf" class="proof-btn" target="_blank">🎓 View Degree Diploma</a>
+            <a href="docs/projeto_final.pdf" class="proof-btn" target="_blank">📄 View Final Project (17/20)</a>
         </div>
     </div>
 
-    <!-- 3. COMPETÊNCIAS -->
+    <!-- 3. CERTIFICADOS (NOVA SECÇÃO) -->
     <div class="section">
-        <h2>Skills</h2>
-        <div class="tags">
-            <span class="tag">Skill 1 (e.g., JavaScript)</span>
-            <span class="tag">Skill 2 (e.g., Python)</span>
-            <span class="tag">Skill 3 (e.g., Git & GitHub)</span>
-            <span class="tag">Problem Solving</span>
-            <span class="tag">Teamwork</span>
-            <!-- Adiciona mais linhas <span class="tag">...</span> conforme precisares -->
+        <h2>Certificates & Achievements</h2>
+        <div class="grid-2">
+            
+            <!-- Certificado 1 -->
+            <div class="item-card">
+                <div class="item-title">Certificate Title 1</div>
+                <div class="item-subtitle">Issuing Organization • Year</div>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">Brief description of the course, workshop, or certification.</p>
+                <a href="docs/certificado1.pdf" class="proof-btn" target="_blank">📜 View Certificate</a>
+            </div>
+
+            <!-- Certificado 2 -->
+            <div class="item-card">
+                <div class="item-title">Certificate Title 2</div>
+                <div class="item-subtitle">Issuing Organization • Year</div>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">Brief description of the course, workshop, or certification.</p>
+                <a href="docs/certificado2.pdf" class="proof-btn" target="_blank">📜 View Certificate</a>
+            </div>
+
+            <!-- Para adicionar mais certificados, basta copiar e colar um bloco <div class="item-card">...</div> aqui -->
         </div>
     </div>
 
-    <!-- 4. IDIOMAS -->
+    <!-- 4. COMPETÊNCIAS -->
+    <div class="section">
+        <h2>Technical Skills</h2>
+        
+        <div class="skill-category">
+            <div class="skill-category-title">Programming Languages</div>
+            <div class="tags">
+                <span class="tag">Kotlin</span>
+                <span class="tag">Java</span>
+                <span class="tag">Python</span>
+                <span class="tag">C / C++</span>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <div class="skill-category-title">Web & Mobile Development</div>
+            <div class="tags">
+                <span class="tag">Android Development</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">XML</span>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <div class="skill-category-title">Databases, Back-end & Architecture</div>
+            <div class="tags">
+                <span class="tag">SQL</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Firestore</span>
+                <span class="tag">Software Architecture & Engineering</span>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <div class="skill-category-title">Design & Methodologies</div>
+            <div class="tags">
+                <span class="tag">UI/UX (Human-Computer Interaction)</span>
+                <span class="tag">Git & GitHub</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. IDIOMAS -->
     <div class="section">
         <h2>Languages</h2>
         <div class="grid-2">
             <div class="item-card">
                 <div class="item-title">Portuguese</div>
-                <div class="item-subtitle">Native</div>
+                <div class="item-subtitle">Native Speaker</div>
             </div>
             <div class="item-card">
                 <div class="item-title">English</div>
-                <div class="item-subtitle">Proficient / Fluent (e.g., B2/C1)</div>
+                <div class="item-subtitle">Advanced</div>
+                <!-- Se tiveres certificado de inglês, podes usar este botão: -->
+                <a href="docs/english_cert.pdf" class="proof-btn" target="_blank">📎 View Certificate</a>
             </div>
         </div>
     </div>
 
-    <!-- 5. PASSATEMPOS -->
+    <!-- 6. PASSATEMPOS & ATIVIDADES -->
     <div class="section">
-        <h2>Hobbies & Interests</h2>
-        <div class="tags">
-            <span class="tag">Gaming</span>
-            <span class="tag">Sports / Fitness</span>
-            <span class="tag">Technology</span>
-            <span class="tag">Travel</span>
+        <h2>Hobbies & Extracurricular Activities</h2>
+        
+        <div class="item-card">
+            <div class="item-title">Youth Football Coach (U-11 at Delães)</div>
+            <p>Activity where I actively practice pedagogy, leadership, communication, and teamwork on a daily basis.</p>
+            <!-- Se quiseres meter uma foto da equipa ou comprovativo de treinador: -->
+            <a href="docs/coaching_proof.pdf" class="proof-btn" target="_blank">📎 View Proof / Photo</a>
+        </div>
+
+        <div class="item-card">
+            <div class="item-title">Digital Game Development</div>
+            <p>My biggest passion and the core focus of my current Master's degree.</p>
         </div>
     </div>
 
-    <!-- 6. CONTACTOS -->
+    <!-- 7. CONTACTOS -->
     <div class="section">
-        <h2>Contact</h2>
-        <div class="item-card contact-links">
-            <p>Feel free to reach out to me for opportunities or collaborations:</p>
-            <a href="mailto:your-email@example.com">✉️ Email Me</a>
-            <a href="https://github.com/JoseMachado21" target="_blank">💻 GitHub</a>
-            <a href="https://linkedin.com/in/your-profile" target="_blank">🔗 LinkedIn</a>
+        <h2>Contact Information</h2>
+        <div class="item-card contact-list">
+            <p>📍 <strong>Location:</strong> Largo do Pombal 128, Bairro, Portugal</p>
+            <p>📞 <strong>Phone:</strong> <a href="tel:+351914594869">+351 914 594 869</a></p>
+            <p>✉️ <strong>Email:</strong> <a href="mailto:zepedromachado021@gmail.com">zepedromachado021@gmail.com</a></p>
+            <p>💻 <strong>GitHub:</strong> <a href="https://github.com/JoseMachado21" target="_blank">github.com/JoseMachado21</a></p>
         </div>
     </div>
 
