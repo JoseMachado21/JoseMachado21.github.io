@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>José Machado | Software & Game Developer</title>
-    <!-- Fonte Inter para um aspeto super moderno -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root[data-theme="dark"] {
@@ -254,6 +253,9 @@
             padding: 25px;
             box-shadow: var(--shadow);
             transition: transform 0.25s, border-color 0.25s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .card:hover {
             transform: translateY(-4px);
@@ -267,8 +269,8 @@
             gap: 10px;
             margin-bottom: 8px;
         }
-        .card-title { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
-        .card-subtitle { color: var(--accent); font-weight: 500; font-size: 0.95rem; margin-bottom: 12px; }
+        .card-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
+        .card-subtitle { color: var(--accent); font-weight: 500; font-size: 0.9rem; margin-bottom: 12px; }
         .card-date {
             background: var(--tag-bg);
             color: var(--tag-text);
@@ -276,11 +278,12 @@
             border-radius: 6px;
             font-size: 0.8rem;
             font-weight: 600;
+            white-space: nowrap;
         }
         .card p { color: var(--text-secondary); margin: 0 0 15px 0; font-size: 0.95rem; }
 
         /* BOTÕES DE COMPROVATIVO (PROOF) */
-        .proof-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .proof-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 10px; }
         a.proof-btn {
             display: inline-flex;
             align-items: center;
@@ -304,7 +307,7 @@
         /* GRELHAS (CERTIFICADOS, COMPETÊNCIAS, IDIOMAS) */
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 20px;
         }
         
@@ -341,7 +344,8 @@
 
         @media (max-width: 600px) {
             h1 { font-size: 2.2rem; }
-            .nav-links a { display: none; } /* Esconde links no telemóvel para ficar limpo */
+            .nav-links a { display: none; }
+            .grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -356,6 +360,7 @@
                 <a href="#education">Education</a>
                 <a href="#certificates">Certificates</a>
                 <a href="#skills">Skills</a>
+                <a href="#activities">Activities</a>
                 <a href="#contact">Contact</a>
                 <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Light</button>
             </div>
@@ -376,7 +381,7 @@
                 <h1>José Machado</h1>
                 <div class="hero-subtitle">Full-Stack & Android Software Developer</div>
                 <p class="hero-summary">
-                    Computer Engineering graduate passionate about building end-to-end applications and interactive digital games. Combining strong software engineering fundamentals with leadership and communication skills honed as a youth football coach.
+                    Computer Engineering graduate passionate about building end-to-end applications and interactive digital games. Combining strong software engineering fundamentals with creative video editing, esports staff operations, and leadership skills honed as a youth football coach.
                 </p>
                 <div class="hero-actions">
                     <a href="docs/cv.pdf" class="btn-primary" target="_blank">📄 Download Official CV</a>
@@ -395,14 +400,16 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="card">
-                        <div class="card-header">
-                            <span class="card-title">Software Developer / Programmer</span>
-                            <span class="card-date">09/2025 – 04/2026 (Active Maintenance)</span>
+                        <div>
+                            <div class="card-header">
+                                <span class="card-title">Software Developer / Programmer</span>
+                                <span class="card-date">09/2025 – 04/2026 (Active Maintenance)</span>
+                            </div>
+                            <div class="card-subtitle">LZ Soluções de Higiene • Vila das Aves, Portugal</div>
+                            <p>
+                                Spearheaded the development of a custom Android application for stock and inventory management. Owned the full development lifecycle: UI/UX Front-end design (XML), core logic in Kotlin, REST API integration, cloud database architecture (Supabase), and version control (Git/GitHub). Currently managing ongoing system maintenance and updates.
+                            </p>
                         </div>
-                        <div class="card-subtitle">LZ Soluções de Higiene • Vila das Aves, Portugal</div>
-                        <p>
-                            Spearheaded the development of a custom Android application for stock and inventory management. Owned the full development lifecycle: UI/UX Front-end design (XML), core logic in Kotlin, REST API integration, cloud database architecture (Supabase), and version control (Git/GitHub). Currently managing ongoing system maintenance and updates.
-                        </p>
                         <div class="proof-group">
                             <a href="docs/lz_proof.pdf" class="proof-btn" target="_blank">📎 View Reference / Project Proof</a>
                         </div>
@@ -421,12 +428,14 @@
                 
                 <div class="timeline-item">
                     <div class="card">
-                        <div class="card-header">
-                            <span class="card-title">MSc in Digital Game Development</span>
-                            <span class="card-date">Current</span>
+                        <div>
+                            <div class="card-header">
+                                <span class="card-title">MSc in Digital Game Development</span>
+                                <span class="card-date">Current</span>
+                            </div>
+                            <div class="card-subtitle">Master's Degree</div>
+                            <p>Focusing on advanced game mechanics, interactive systems, computer graphics, and digital game architecture.</p>
                         </div>
-                        <div class="card-subtitle">Master's Degree</div>
-                        <p>Focusing on advanced game mechanics, interactive systems, computer graphics, and digital game architecture.</p>
                         <div class="proof-group">
                             <a href="docs/masters_enrollment.pdf" class="proof-btn" target="_blank">📎 View Enrollment Proof</a>
                         </div>
@@ -435,14 +444,16 @@
 
                 <div class="timeline-item">
                     <div class="card">
-                        <div class="card-header">
-                            <span class="card-title">BSc in Computer Engineering (Licenciatura)</span>
-                            <span class="card-date">09/2023 – 06/2026</span>
+                        <div>
+                            <div class="card-header">
+                                <span class="card-title">BSc in Computer Engineering (Licenciatura)</span>
+                                <span class="card-date">09/2023 – 06/2026</span>
+                            </div>
+                            <div class="card-subtitle">Universidade Lusófona do Porto • Porto, Portugal</div>
+                            <p>
+                                Comprehensive training in software engineering, algorithms, databases, and system architecture. Completed the degree with a distinguished final grade of <strong>17/20</strong> on the Capstone Project.
+                            </p>
                         </div>
-                        <div class="card-subtitle">Universidade Lusófona do Porto • Porto, Portugal</div>
-                        <p>
-                            Comprehensive training in software engineering, algorithms, databases, and system architecture. Completed the degree with a distinguished final grade of <strong>17/20</strong> on the Capstone Project.
-                        </p>
                         <div class="proof-group">
                             <a href="docs/diploma_licenciatura.pdf" class="proof-btn" target="_blank">🎓 View Degree Diploma</a>
                             <a href="docs/projeto_final.pdf" class="proof-btn" target="_blank">⭐ View Capstone Project (17/20)</a>
@@ -453,35 +464,71 @@
             </div>
         </section>
 
-        <!-- 3. CERTIFICADOS -->
+        <!-- 3. CERTIFICADOS (ATUALIZADO COM OS TEUS 4 FICHEIROS) -->
         <section id="certificates" class="section">
             <div class="section-header">
-                <h2>🏆 Certificates & Achievements</h2>
+                <h2>🏆 Certificates & Conferences</h2>
                 <div class="section-line"></div>
             </div>
             <div class="grid-2">
                 
+                <!-- Certificado 1: NDC Porto 2023 -->
                 <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">Certificate Title 1</span>
-                        <span class="card-date">Year</span>
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">NDC Porto 2023 – Volunteer Crew</span>
+                            <span class="card-date">Oct 2023</span>
+                        </div>
+                        <div class="card-subtitle">NDC Conferences</div>
+                        <p>Certificate of Attendance and contribution as part of the Volunteer Crew at NDC Porto 2023, one of Europe's premier software developer conferences (18–20 October 2023).</p>
                     </div>
-                    <div class="card-subtitle">Issuing Organization</div>
-                    <p>Brief description of the certification, skills acquired, or course completed.</p>
                     <div class="proof-group">
-                        <a href="docs/certificado1.pdf" class="proof-btn" target="_blank">📜 View Certificate</a>
+                        <a href="docs/ndc_porto_2023.pdf" class="proof-btn" target="_blank">📜 View Certificate</a>
                     </div>
                 </div>
 
+                <!-- Certificado 2: UP LAB - IA nas Empresas (Nemo Claw) -->
                 <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">Certificate Title 2</span>
-                        <span class="card-date">Year</span>
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">UP LAB: Limitless AI in Companies</span>
+                            <span class="card-date">Oct 16</span>
+                        </div>
+                        <div class="card-subtitle">Exponor – Feira Internacional do Porto</div>
+                        <p>Participated in the UP LAB session dedicated to the topic: <em>"Limitless AI: The Future of AI in Companies with Nemo Claw"</em> ("IA Sem Limites: O Futuro da IA nas Empresas com Nemo Claw").</p>
                     </div>
-                    <div class="card-subtitle">Issuing Organization</div>
-                    <p>Brief description of the certification, skills acquired, or course completed.</p>
                     <div class="proof-group">
-                        <a href="docs/certificado2.pdf" class="proof-btn" target="_blank">📜 View Certificate</a>
+                        <a href="docs/up_lab_ai_companies.pdf" class="proof-btn" target="_blank">📜 View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Certificado 3: UP LAB - IA no Turismo -->
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">UP LAB: AI & Value Redefinition</span>
+                            <span class="card-date">Oct 16</span>
+                        </div>
+                        <div class="card-subtitle">Exponor – Feira Internacional do Porto</div>
+                        <p>Participated in the UP LAB session dedicated to the topic: <em>"AI Will Not Replace People in Tourism. It Will Redefine Their Value"</em> ("A IA Não Vai Substituir Pessoas no Turismo. Vai Redefinir o Seu Valor").</p>
+                    </div>
+                    <div class="proof-group">
+                        <a href="docs/up_lab_ai_tourism.pdf" class="proof-btn" target="_blank">📜 View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Certificado 4: UP Formação Contínua e RH -->
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">UP – Continuing Education & HR</span>
+                            <span class="card-date">Oct 15–16</span>
+                        </div>
+                        <div class="card-subtitle">Exponor – Feira Internacional do Porto</div>
+                        <p>Certificate of Participation in the UP Continuing Education and Human Resources summit held at Exponor, Porto.</p>
+                    </div>
+                    <div class="proof-group">
+                        <a href="docs/up_exponor_event.pdf" class="proof-btn" target="_blank">📜 View Certificate</a>
                     </div>
                 </div>
 
@@ -527,57 +574,80 @@
                 </div>
 
                 <div class="skill-box" style="margin-bottom: 0;">
-                    <div class="skill-box-title">Design & Tools</div>
+                    <div class="skill-box-title">Design, Media & Tools</div>
                     <div class="tags">
                         <span class="tag">UI / UX Design (HCI)</span>
                         <span class="tag">Git & GitHub</span>
+                        <span class="tag">Video Editing</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. IDIOMAS E PASSATEMPOS -->
-        <section class="section">
-            <div class="grid-2">
+        <!-- 5. PASSATEMPOS, LIDERANÇA E IDIOMAS -->
+        <section id="activities" class="section">
+            <div class="section-header">
+                <h2>🚀 Extracurricular Activities & Hobbies</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="grid-2" style="margin-bottom: 50px;">
                 
-                <!-- IDIOMAS -->
-                <div>
-                    <div class="section-header">
-                        <h2>🌍 Languages</h2>
-                        <div class="section-line"></div>
+                <!-- BeeHOF Esports -->
+                <div class="card">
+                    <div>
+                        <div class="card-title">🎬 Video Editor & Staff Member</div>
+                        <div class="card-subtitle">BeeHOF Esports Team</div>
+                        <p>Producing and editing digital video content, managing multimedia assets, and supporting operational and team management activities within the competitive esports scene.</p>
                     </div>
-                    <div class="card" style="margin-bottom: 15px;">
+                    <div class="proof-group">
+                        <a href="docs/beehof_proof.pdf" class="proof-btn" target="_blank">📎 View Portfolio / Proof</a>
+                    </div>
+                </div>
+
+                <!-- Treinador de Futebol -->
+                <div class="card">
+                    <div>
+                        <div class="card-title">⚽ Youth Football Coach (U-11)</div>
+                        <div class="card-subtitle">GD Delães</div>
+                        <p>Practicing daily leadership, team management, pedagogy, and clear communication with young athletes on and off the pitch.</p>
+                    </div>
+                    <div class="proof-group">
+                        <a href="docs/coaching_proof.pdf" class="proof-btn" target="_blank">📎 View Coaching Proof</a>
+                    </div>
+                </div>
+
+                <!-- Game Dev -->
+                <div class="card">
+                    <div>
+                        <div class="card-title">🎮 Digital Game Development</div>
+                        <div class="card-subtitle">Personal Projects & Academic Focus</div>
+                        <p>Designing interactive worlds, mechanics, and gameplay loops—bridging my greatest hobby with my Master's degree specialization.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- IDIOMAS -->
+            <div class="section-header">
+                <h2>🌍 Languages</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <div>
                         <div class="card-title">Portuguese</div>
                         <div class="card-subtitle" style="margin-bottom:0;">Native Speaker</div>
                     </div>
-                    <div class="card">
+                </div>
+                <div class="card">
+                    <div>
                         <div class="card-title">English</div>
                         <div class="card-subtitle">Advanced / Proficient</div>
-                        <div class="proof-group">
-                            <a href="docs/english_cert.pdf" class="proof-btn" target="_blank">📎 View Language Certificate</a>
-                        </div>
+                    </div>
+                    <div class="proof-group">
+                        <a href="docs/english_cert.pdf" class="proof-btn" target="_blank">📎 View Language Certificate</a>
                     </div>
                 </div>
-
-                <!-- PASSATEMPOS -->
-                <div>
-                    <div class="section-header">
-                        <h2>⚽ Leadership & Hobbies</h2>
-                        <div class="section-line"></div>
-                    </div>
-                    <div class="card" style="margin-bottom: 15px;">
-                        <div class="card-title">Youth Football Coach (U-11 at Delães)</div>
-                        <p style="margin-top: 8px;">Practicing daily leadership, team management, pedagogy, and clear communication with young athletes.</p>
-                        <div class="proof-group">
-                            <a href="docs/coaching_proof.pdf" class="proof-btn" target="_blank">📎 View Coaching Proof</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-title">Digital Game Development</div>
-                        <p style="margin-top: 8px; margin-bottom: 0;">Creating interactive worlds and mechanics—both my main hobby and academic specialization.</p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -589,7 +659,7 @@
             </div>
             <div class="card">
                 <p>Interested in collaborating or have an open role? Feel free to reach out directly:</p>
-                <div class="grid-2" style="margin-top: 20px;">
+                <div class="grid-2" style="margin-top: 15px;">
                     <div>
                         <p><strong>✉️ Email:</strong><br><a href="mailto:zepedromachado021@gmail.com" style="color: var(--accent); text-decoration: none;">zepedromachado021@gmail.com</a></p>
                         <p><strong>📞 Phone:</strong><br><a href="tel:+351914594869" style="color: var(--accent); text-decoration: none;">+351 914 594 869</a></p>
@@ -607,7 +677,6 @@
         © 2026 José Machado • Built with HTML/CSS & Hosted on GitHub Pages
     </footer>
 
-    <!-- SCRIPT PARA ALTERNAR ENTRE DARK MODE E LIGHT MODE -->
     <script>
         function toggleTheme() {
             const html = document.documentElement;
